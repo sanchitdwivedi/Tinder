@@ -45,11 +45,11 @@ const ModalScreen = () => {
   return (
     <SafeAreaView style={tw`flex-1 items-center pt-1`}>
       <Image 
-        style={[tw`h-25 w-full`, {backgroundColor: "transparent"}]}
+        style={[tw`h-30 w-full`, {backgroundColor: "transparent"}]}
         resizeMode="contain"
-        source={{uri: "https://sm.pcmag.com/pcmag_in/review/t/tinder/tinder_q5ze.png"}}
+        source={{uri: "https://download.logo.wine/logo/Tinder_(app)/Tinder_(app)-Logo.wine.png"}}
       /> 
-      <Text style={tw`text-xl text-gray-500 p-2 font-bold`}>Welcome {user.displayName}</Text>
+      <Text style={tw`text-xl text-gray-500 p-2 font-bold`}>Welcome {user.displayname}</Text>
 
       <Text style={tw`text-center p-4 font-bold text-red-400`}>Step 1: The Profile Pic</Text>
       <TextInput value={image} onChangeText={setImage} style={tw`text-center text-xl pb-2`} placeholder='Enter a Profile Pic URL' />

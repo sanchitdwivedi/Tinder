@@ -7,7 +7,8 @@ import tw, { create } from "twrnc";
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 import Swiper from 'react-native-deck-swiper';
 import { collection, onSnapshot, where } from 'firebase/firestore';
-import { getFirestore, serverTimestamp, doc, setDoc, query, getDocs } from 'firebase/firestore'
+import { getFirestore, serverTimestamp, doc, setDoc, query, getDocs, getDoc } from 'firebase/firestore'
+import generateId from '../lib/generateId';
 
 const DUMMY_DATA = [
   {
@@ -67,20 +68,48 @@ const HomeScreen = () => {
       return unsub;
     }, [db])
 
-    const swipeLeft = async () => {
+    const swipeLeft = async (cardIndex) => {
       if(!profiles[cardIndex]) return;
 
       const userSwiped = profiles[cardIndex];
-      console.log(`You swiped PASS on ${userSwiped.displaName}`);
+      console.log(`You swiped PASS on ${userSwiped.displayname}`);
 
       setDoc(doc(db, 'users', user.uid, 'passes', userSwiped.id), userSwiped);
     };
 
-    const swipeRight = async () => {
+    const swipeRight = async (cardIndex) => {
       if(!profiles[cardIndex]) return;
 
       const userSwiped = profiles[cardIndex];
-      console.log(`You swiped MATCH on ${userSwiped.displaName} (${user.job})`);
+      const loggedInProfile = await (await getDoc(doc(db, 'users', user.uid))).data();
+
+      await getDoc(doc(db, 'users', userSwiped.id, 'swipes', user.uid)).then((documentSnapshot) => {
+        if(documentSnapshot.exists()) {
+          // user has matched with you before you matched with them
+          console.log(`You MATCHED with ${userSwiped.displaName}`);
+
+          setDoc(doc(db, 'users', user.uid, 'swipes', userSwiped.id), userSwiped);
+
+          setDoc(doc(db, 'matches', generateId(user.uid, userSwiped.id)), {
+            users: {
+              [user.uid]: loggedInProfile,
+              [userSwiped.id]: userSwiped
+            },
+            usersMatched: [user.uid, userSwiped.id],
+            timeStamp: serverTimestamp()
+          });
+
+          navigation.navigate("Match", {
+            loggedInProfile,
+            userSwiped
+          });
+        }
+        else{
+          console.log(`You swiped on ${userSwiped.displayname} (${userSwiped.job})`);
+        }
+      })
+
+      console.log(`You swiped MATCH on ${userSwiped.displayname} (${userSwiped.job})`);
 
       setDoc(doc(db, 'users', user.uid, 'swipes', userSwiped.id), userSwiped);
     }
@@ -154,7 +183,7 @@ const HomeScreen = () => {
               <Text style={tw`pb-5 font-bold`}>No more profiles</Text>
               <Image
                 style = {tw`h-20 w-20`}
-                source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSddTiCPqw0cw3P0ajyg9bd8tblPTOUrIYRCvDWM8XFVa7pq7OYDQvrqIarGu0OFhrZNUE&usqp=CAU"}}
+                source={{uri: "https://pbs.twimg.com/media/FGuYQ25XEAE7eVR.png"}}
               />
           </View>
         )}/>
