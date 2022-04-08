@@ -4,19 +4,23 @@ import useAuth from '../hooks/useAuth';
 import {useNavigation} from "@react-navigation/core"
 import getMatchedUserInfo from '../lib/getMatchedUserInfo';
 import tw from "twrnc";
+import {collection, getFirestore, onSnapshot, query, orderBy} from "firebase/firestore";
 
 const ChatRow = ({matchDetails}) => {
     const navigation = useNavigation();
     const {user} = useAuth();
     const [matchedUserInfo, setMatchedUserInfo] = useState(null);
+    const [lastMessage, setLastMessage] = useState('');
+    const db = getFirestore();
 
     useEffect(() => {
         setMatchedUserInfo(getMatchedUserInfo(matchDetails.users, user.uid));
     }, [matchDetails, user]);
 
-    useEffect(() => {
-
-    }, []);
+    useEffect(() => onSnapshot(query(collection(db, 'matches', matchDetails.id, 'messages'),
+                              orderBy("timestamp", "desc")
+                              ), snapshot => setLastMessage(snapshot.docs[0]?.data()?.message))
+                    , [matchDetails, db]);
 
   return (
     <TouchableOpacity style={[tw`flex-row items-center py-3 px-5 bg-white mx-3 my-1 rounded-lg`, styles.cardShadow]} onPress={() => navigation.navigate('Message', {
@@ -30,7 +34,7 @@ const ChatRow = ({matchDetails}) => {
             <Text style={tw`text-lg font-semibold`}>
                 {matchedUserInfo?.displayname}
             </Text>
-            <Text>Say Hi!</Text>
+            <Text>{lastMessage || "Say Hi!"}</Text>
         </View>
     </TouchableOpacity>
   )
