@@ -34,19 +34,14 @@ jobs:
         run: npm run prettier-format
       - name: Lint
         run: npm run lint
-#       - name: Installing docker
-#         run: |
-#           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-#           brew install docker
-#           systemctl start docker
-      - name: Build and push docker image
-        uses: mr-smithers-excellent/docker-build-push@v5
-        with:
-          image: sanchitdwivedi/tinder
-          tags: latest
-          registry: docker.io
-          dockerfile: Dockerfile
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build Android APK Bundle
-        run: expo build:android
+#       - name: Build and push docker image
+#         uses: mr-smithers-excellent/docker-build-push@v5
+#         with:
+#           image: sanchitdwivedi/tinder
+#           tags: latest
+#           registry: docker.io
+#           dockerfile: Dockerfile
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+#       - name: Build Android APK Bundle
+#         run: expo build:android
