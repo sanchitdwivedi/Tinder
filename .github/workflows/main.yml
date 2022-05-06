@@ -36,6 +36,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: sanchitdwivedi/tinder
+          tags: latest
           registry: docker.io
           dockerfile: Dockerfile
           username: sanchitdwivedi
