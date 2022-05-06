@@ -38,5 +38,5 @@ jobs:
           image: sanchitdwivedi/tinder
           registry: docker.io
           dockerfile: Dockerfile
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: sanchitdwivedi
+          password: 123sandwi123@saM
