@@ -30,8 +30,8 @@ jobs:
           yarn test
         env:
           CI: true
-      - name: Build Android APK Bundle
-        run: expo build:android
+#       - name: Build Android APK Bundle
+#         run: expo build:android
       - name: Build and push docker
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
