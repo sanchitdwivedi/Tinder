@@ -22,16 +22,6 @@ jobs:
           expo-version: 5.x
           expo-username: sanchit_sd
           expo-password: 123sandwi123@saM
-#       - name: Install deps
-#         run: yarn install
-#       - name: Run tests
-#         run: |
-#           yarn
-#           yarn test
-#         env:
-#           CI: true
-#       - name: Build Android APK Bundle
-#         run: expo build:android
       - name: Build and push docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
