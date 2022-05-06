@@ -30,6 +30,10 @@ jobs:
           yarn test
         env:
           CI: true
+      - name: Format using Prettier
+        run: npm run prettier-format
+      - name: Lint
+        run: npm run lint
 #       - name: Installing docker
 #         run: |
 #           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
