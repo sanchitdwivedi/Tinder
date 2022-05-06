@@ -12,10 +12,7 @@
     "lint": "eslint . --ext .ts,.tsx,.json --max-warnings 0",
     "lint-and-fix": "eslint . --ext .ts,.tsx,.json --fix",
     "prettier": "prettier src -check",
-    "prettier-format": "prettier --config .prettierrc **/*.{json,ts,tsx,css,scss,md} --write",
-    "lint-staged": "lint-staged --config lint-staged.js",
-    "husky-install": "husky install",
-    "prepare": "husky install"
+    "prettier-format": "prettier --config .prettierrc **/*.{json,ts,tsx,css,scss,md} --write"
   },
   "husky": {
     "hooks": {
@@ -62,5 +59,9 @@
     "prettier": "^2.6.2",
     "typescript": "~3.9.5"
   },
-  "private": true
+  "private": true,
+  "lint-staged": {
+    "*.{json,ts,tsx,css,scss,md}": "prettier --config .prettierrc --write",
+    "*.{ts,tsx,json}": "eslint --cache --max-warnings 0"
+  }
 }
