@@ -25,6 +25,10 @@ jobs:
       - name: Install deps
         run: yarn install
       - name: Run tests
-        run: npm test
+        run: |
+          yarn
+          yarn test
+        env:
+          CI: true
       - name: Build Android APK Bundle
         run: expo build:android
