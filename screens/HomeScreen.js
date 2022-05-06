@@ -10,24 +10,24 @@ import { collection, onSnapshot, where } from 'firebase/firestore';
 import { getFirestore, serverTimestamp, doc, setDoc, query, getDocs, getDoc } from 'firebase/firestore'
 import generateId from '../lib/generateId';
 
-const DUMMY_DATA = [
-  {
-    firstName: "Sanchit",
-    lastName: "Dwivedi",
-    job: "Software Developer",
-    photoURL: "https://avatars.githubusercontent.com/u/24520115?v=4",
-    age: 23,
-    id: 123
-  },
-  {
-    firstName: "Elon",
-    lastName: "Musk",
-    job: "Tesla CEO",
-    photoURL: "https://techcrunch.com/wp-content/uploads/2021/01/GettyImages-1229901940.jpg?w=730&crop=1",
-    age: 40,
-    id: 456
-  }
-]
+// const DUMMY_DATA = [
+//   {
+//     firstName: "Sanchit",
+//     lastName: "Dwivedi",
+//     job: "Software Developer",
+//     photoURL: "https://avatars.githubusercontent.com/u/24520115?v=4",
+//     age: 23,
+//     id: 123
+//   },
+//   {
+//     firstName: "Elon",
+//     lastName: "Musk",
+//     job: "Tesla CEO",
+//     photoURL: "https://techcrunch.com/wp-content/uploads/2021/01/GettyImages-1229901940.jpg?w=730&crop=1",
+//     age: 40,
+//     id: 456
+//   }
+// ]
 
 const HomeScreen = () => {
     const navigation = useNavigation();
