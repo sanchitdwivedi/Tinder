@@ -4,9 +4,9 @@ import LoginScreen from '../screens/LoginScreen'
 
 describe('Login', () => {
     describe('Rendering', () => {
-        it("renders login screen without crash", () => {
+        it("renders login screen without crash", async () => {
             const login = renderer.create(<LoginScreen/>).toJSON();
-            expect(login).toMatchSnapshot();
+            await expect(login).toMatchSnapshot();
         })
     });
 });
