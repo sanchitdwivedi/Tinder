@@ -6,7 +6,7 @@ on:
 
 jobs:
   Build-for-android:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -22,6 +22,10 @@ jobs:
           expo-version: 5.x
           expo-username: sanchit_sd
           expo-password: 123sandwi123@saM
+      - name: Installing docker
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install docker
       - name: Build and push docker image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
