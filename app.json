@@ -24,7 +24,13 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.sanchit_sd.tinder2"
+      "package": "com.sanchitsd.tinder2",
+      "config": {
+        "googleSignIn": {
+          "certificateHash": "DD92E2B9C3E0725E7B5820DEFEB1729565EC479C",
+          "apiKey": "AIzaSyAJn5p9uyvnNlx5NbfMgEOyK3N_BR-iZsw"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
