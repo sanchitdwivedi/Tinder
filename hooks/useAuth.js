@@ -14,6 +14,11 @@ import {
   signOut,
 } from "@firebase/auth";
 import { auth } from "../firebase";
+import { logger } from 'react-native-logs';
+ 
+var log = logger.createLogger();
+ 
+log.info('Signing in');
 
 const AuthContext = createContext({});
 

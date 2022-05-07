@@ -4934,7 +4934,7 @@
   "resolved" "https://registry.npmjs.org/human-signals/-/human-signals-1.1.1.tgz"
   "version" "1.1.1"
 
-"husky@^7.0.4":
+"husky@^7.0.0":
   "integrity" "sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ=="
   "resolved" "https://registry.npmjs.org/husky/-/husky-7.0.4.tgz"
   "version" "7.0.4"
@@ -7534,6 +7534,11 @@
   "version" "2.0.5"
   dependencies:
     "prop-types" "15.5.10"
+
+"react-native-logs@^2.2.1":
+  "integrity" "sha512-yWS2sPy3ZksYBt9C6Ga7YkBWOFT3E/onLluyci42iv29MWcQim0i59vUmZgIFgg2NwC04IQi04xfK5GiSZvyrQ=="
+  "resolved" "https://registry.npmjs.org/react-native-logs/-/react-native-logs-2.2.1.tgz"
+  "version" "2.2.1"
 
 "react-native-safe-area-context@3.3.2":
   "integrity" "sha512-yOwiiPJ1rk+/nfK13eafbpW6sKW0jOnsRem2C1LPJjM3tfTof6hlvV5eWHATye3XOpu2cJ7N+HdkUvUDGwFD2Q=="
