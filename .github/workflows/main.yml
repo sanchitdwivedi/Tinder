@@ -30,7 +30,7 @@ jobs:
           yarn test
         env:
           CI: true
-      - name: Format using Prettier
+      - name: Format using Prettifier
         run: npm run prettier-format
       - name: Lint
         run: npm run lint
